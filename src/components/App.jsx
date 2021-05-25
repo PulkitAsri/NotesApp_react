@@ -10,7 +10,11 @@ function App() {
   function addNote(note) {
     setNotesArray((prevItems) => [...prevItems, note]);
   }
-  
+  function deleteNote(id) {
+    setNotesArray((prevItems) => {
+      return prevItems.filter((obj, index) => index !== id);
+    });
+  }
 
   return (
     <div>
@@ -23,7 +27,7 @@ function App() {
           key={key}
           title={element.title}
           content={element.content}
-          
+          onDeleteClick={deleteNote}
         />
       ))}
 
